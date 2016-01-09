@@ -3,8 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>free</groupId>
-	<artifactId>Hsn</artifactId>
+	<artifactId>hsn</artifactId>
 	<version>0.1</version>
+	
+	<name>hsn</name>
+	<url>https://github.com/adar-w/Hsn.git</url>
 	
 	<developers>
 		<developer>
