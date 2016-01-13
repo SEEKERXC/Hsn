@@ -129,7 +129,7 @@ public class TaskProcessor implements Closeable {
 						try {
 							channelTask.channelSession().close();
 						} catch (IOException e2) {
-							Logger.error("ChannelSession close fail.", e);
+							Logger.error("ChannelSession close fail.", e2);
 						}
 					}
 					
