@@ -28,7 +28,6 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 import free.hsn.buffer.ChannelBuffer;
 
-
 public class BufferPool implements Closeable {
 	
 	private GenericObjectPool<ChannelBuffer> objectPool;
