@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
+import java.util.HashMap;
+import java.util.Map;
 
 import free.hsn.buffer.ChannelBuffer;
 import free.hsn.core.HsnServer;
@@ -34,6 +36,8 @@ public class ChannelSession {
 	private SocketChannel socketChannel;
 	
 	private SelectionKey selectionKey;
+	
+	private Map<String, Object> attributes;
 	
 	private ChannelContext channelContext;
 	
@@ -93,6 +97,18 @@ public class ChannelSession {
 
 	public void selectionKey(SelectionKey selectionKey) {
 		this.selectionKey = selectionKey;
+	}
+	
+	public void setAttribute(String name, Object value) {
+		if (attributes == null) {
+			attributes = new HashMap<String, Object>();
+		}
+		
+		attributes.put(name, value);
+	}
+	
+	public Object getAttribute(String name) {
+		return attributes.get(name);
 	}
 	
 	private void needFlush(boolean needFlush) {
@@ -277,6 +293,14 @@ public class ChannelSession {
 		
 		public SocketChannel socketChannel() {
 			return channelSession.socketChannel;
+		}
+		
+		public void setAttribute(String name, Object value) {
+			channelSession.setAttribute(name, value);
+		}
+		
+		public Object getAttribute(String name) {
+			return channelSession.getAttribute(name);
 		}
 		
 		public ByteBuffer read() {
