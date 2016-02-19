@@ -50,7 +50,7 @@ public class ChannelSelector implements Runnable {
 	
 	@Override
 	public void run() {
-		while (true) {
+		while (true && !Thread.interrupted()) {
 			try {
 				selector.select();
 			} catch (IOException e) {
@@ -79,7 +79,7 @@ public class ChannelSelector implements Runnable {
 					try {
 						TimeUnit.MILLISECONDS.sleep(100);
 					} catch (InterruptedException e) {
-						// Need do nothing.
+						Thread.currentThread().interrupt();
 					}
 				}
 			}
