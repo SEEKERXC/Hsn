@@ -50,7 +50,7 @@ public class ChannelSelector implements Runnable {
 	
 	@Override
 	public void run() {
-		while (true && !Thread.interrupted()) {
+		while (!Thread.interrupted()) {
 			try {
 				selector.select();
 			} catch (IOException e) {
