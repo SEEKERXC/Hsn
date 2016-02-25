@@ -73,6 +73,8 @@ public class ChannelSelector implements Runnable {
 					} else if (key.isWritable()) {
 						ChannelHandler.handlerWrite(server, key);
 					}
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
 				} catch(Throwable throwable){
 					Logger.error("ChannelKey handle fail.", throwable);
 					

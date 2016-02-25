@@ -122,8 +122,6 @@ public class TaskProcessor implements Closeable {
 	
 	private static class QueueTask implements Runnable {
 
-		private boolean stop;
-		
 		private BlockingQueue<ChannelTask> channelTaskQueue;
 	
 		public QueueTask(BlockingQueue<ChannelTask> channelTaskQueue) {
@@ -132,13 +130,13 @@ public class TaskProcessor implements Closeable {
 		
 		@Override
 		public void run() {
-			while (!stop) {
+			while (!Thread.interrupted()) {
 				ChannelTask channelTask = null;
 				try {
 					channelTask = channelTaskQueue.take();
 					channelTask.run();
 				} catch (InterruptedException e) {
-					stop = true;
+					Thread.currentThread().interrupt();
 				} catch (Exception e) {
 					Logger.error("An exception occurs on channelTask running.", e);
 					
@@ -153,7 +151,7 @@ public class TaskProcessor implements Closeable {
 					try {
 						TimeUnit.MILLISECONDS.sleep(100);
 					} catch (InterruptedException e1) {
-						// Need do nothing.
+						Thread.currentThread().interrupt();
 					}
 				}
 			}
