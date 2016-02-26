@@ -137,20 +137,20 @@ public class TaskProcessor implements Closeable {
 					channelTask.run();
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
-				} catch (Exception e) {
-					Logger.error("An exception occurs on channelTask running.", e);
+				} catch (Throwable throwable) {
+					Logger.error("An exception occurs on channelTask running.", throwable);
 					
 					if (channelTask != null) {
 						try {
 							channelTask.channelSession().close();
-						} catch (IOException e2) {
-							Logger.error("ChannelSession close fail.", e2);
+						} catch (Throwable closeException) {
+							Logger.error("ChannelSession close fail.", closeException);
 						}
 					}
 					
 					try {
 						TimeUnit.MILLISECONDS.sleep(100);
-					} catch (InterruptedException e1) {
+					} catch (InterruptedException e) {
 						Thread.currentThread().interrupt();
 					}
 				}

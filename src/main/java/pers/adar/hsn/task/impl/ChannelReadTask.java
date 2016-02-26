@@ -17,8 +17,6 @@
  */
 package pers.adar.hsn.task.impl;
 
-import java.io.IOException;
-
 import pers.adar.hsn.component.ChannelSession;
 
 public class ChannelReadTask extends AbstractChannelTask {
@@ -42,8 +40,8 @@ public class ChannelReadTask extends AbstractChannelTask {
 			channelSession.filpReadBuffer();
 			
 			channelSession.onMessage();
-		} catch (IOException e) {
-			channelSession.onExeception(e);
+		} catch (Throwable throwable) {
+			channelSession.onExeception(throwable);
 		}
 
 		channelSession.flush();
