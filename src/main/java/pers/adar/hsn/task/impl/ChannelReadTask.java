@@ -38,14 +38,14 @@ public class ChannelReadTask extends AbstractChannelTask {
 				channelSession.close();
 				return;
 			}
+		
+			channelSession.filpReadBuffer();
+			
+			channelSession.onMessage();
 		} catch (IOException e) {
 			channelSession.onExeception(e);
 		}
-		
-		channelSession.filpReadBuffer();
-		
-		channelSession.onMessage();
-		
+
 		channelSession.flush();
 
 		channelSession.clearReadBuffer();
