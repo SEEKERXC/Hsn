@@ -106,7 +106,7 @@ public class TaskProcessor implements Closeable {
 		@SuppressWarnings("unchecked")
 		BlockingQueue<ChannelTask>[] channelTaskQueues = new LinkedBlockingQueue[server.channelThreadCount()];
 		for (int i = 0; i < channelTaskQueues.length; i++) {
-			channelTaskQueues[i] = new LinkedBlockingQueue<ChannelTask>();
+			channelTaskQueues[i] = new LinkedBlockingQueue<>();
 		}
 		
 		return channelTaskQueues;

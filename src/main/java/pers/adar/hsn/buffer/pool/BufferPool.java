@@ -53,7 +53,7 @@ public class BufferPool implements Closeable {
 	private GenericObjectPool<ChannelBuffer> buildPool(int corePoolSize, int maxPoolSize, int keepAliveTime, int bufferSize) {
 		GenericObjectPoolConfig poolConfig = buildPoolConfig(corePoolSize, maxPoolSize, keepAliveTime);
 		
-		return new GenericObjectPool<ChannelBuffer>(new BufferFactory(bufferSize), poolConfig);
+		return new GenericObjectPool<>(new BufferFactory(bufferSize), poolConfig);
 	}
 	
 	private GenericObjectPoolConfig buildPoolConfig(int corePoolSize, int maxPoolSize, int keepAliveTime) {
@@ -82,7 +82,7 @@ public class BufferPool implements Closeable {
 	
 		@Override
 		public PooledObject<ChannelBuffer> makeObject() throws Exception {
-			return new DefaultPooledObject<ChannelBuffer>(new ChannelBuffer(ByteBuffer.allocateDirect(bufferSize)));
+			return new DefaultPooledObject<>(new ChannelBuffer(ByteBuffer.allocateDirect(bufferSize)));
 		}
 	
 		@Override

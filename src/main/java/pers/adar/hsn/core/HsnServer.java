@@ -42,7 +42,7 @@ public class HsnServer {
 
 	private int bufferPoolSize = HsnProperties.DEFAULT_BUFFER_POOL_SIZE;
 	
-	private Map<SocketOption, Object> socketOptions = new HashMap<SocketOption, Object>();
+	private Map<SocketOption, Object> socketOptions = new HashMap<>();
 	
 	private AcceptProcessor acceptProcessor;
 	
