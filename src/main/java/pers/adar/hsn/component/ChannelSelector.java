@@ -36,7 +36,7 @@ public class ChannelSelector implements Runnable {
 
 	private Selector selector;
 	
-	private final Queue<RegisterChannel> registerChannels = new LinkedBlockingQueue<RegisterChannel>();
+	private final Queue<RegisterChannel> registerChannels = new LinkedBlockingQueue<>();
 	
 	public ChannelSelector(HsnServer server) throws IOException {
 		this.server = server;

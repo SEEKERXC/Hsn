@@ -101,7 +101,7 @@ public class ChannelSession {
 	
 	public void setAttribute(String name, Object value) {
 		if (attributes == null) {
-			attributes = new HashMap<String, Object>();
+			attributes = new HashMap<>();
 		}
 		
 		attributes.put(name, value);
