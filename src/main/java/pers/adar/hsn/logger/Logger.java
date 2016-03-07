@@ -19,7 +19,9 @@ package pers.adar.hsn.logger;
 
 import pers.adar.hsn.common.HsnProperties;
 
-public class Logger {
+public final class Logger {
+
+	private Logger() {}
 
 	private static final org.slf4j.Logger HSN_LOGGER = org.slf4j.LoggerFactory.getLogger(HsnProperties.HSN);
 	

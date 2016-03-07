@@ -26,8 +26,10 @@ import pers.adar.hsn.logger.Logger;
 import pers.adar.hsn.task.impl.ChannelReadTask;
 import pers.adar.hsn.task.impl.ChannelWriteTask;
 
-public class ChannelHandler {
-	
+public final class ChannelHandler {
+
+	private ChannelHandler() {}
+
 	public static void handlerAccpet(HsnServer server, SelectionKey selectionKey) throws Exception {
 		ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
 		SocketChannel socketChannel = serverSocketChannel.accept();

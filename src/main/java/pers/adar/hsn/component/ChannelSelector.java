@@ -90,7 +90,7 @@ public class ChannelSelector implements Runnable {
 	}
 	
 	private void processRegisterChannels() {
-		RegisterChannel registerChannel = null;
+		RegisterChannel registerChannel;
 		while ((registerChannel = registerChannels.poll()) != null) {
 			try {
 				registerChannel.channel.register(selector, registerChannel.interestOps, registerChannel.channelSession);
