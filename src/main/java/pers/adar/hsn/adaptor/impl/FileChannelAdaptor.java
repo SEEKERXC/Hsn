@@ -41,7 +41,7 @@ public class FileChannelAdaptor extends StandardChannelAdaptor {
 		channelContext.close();
 	}
 	
-	private String now() {
+	private static String now() {
 		return new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
 	}
 }

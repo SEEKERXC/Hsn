@@ -62,17 +62,7 @@ public class ChannelSelector implements Runnable {
 			Set<SelectionKey> keys = selector.selectedKeys();
 			for (SelectionKey key : keys) {
 				try{
-					if (!key.isValid()) {
-						continue;
-					}
-					
-					if (key.isAcceptable()) {
-						ChannelHandler.handlerAccpet(server, key);
-					} else if (key.isReadable()) {
-						ChannelHandler.handlerRead(server, key);
-					} else if (key.isWritable()) {
-						ChannelHandler.handlerWrite(server, key);
-					}
+					handle(key);
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 				} catch(Throwable throwable){
@@ -88,7 +78,17 @@ public class ChannelSelector implements Runnable {
 			keys.clear();
 		}
 	}
-	
+
+	private void handle(SelectionKey key) throws Exception {
+		if (key.isValid() && key.isAcceptable()) {
+			ChannelHandler.handlerAccpet(server, key);
+		} else if (key.isReadable()) {
+			ChannelHandler.handlerRead(server, key);
+		} else if (key.isWritable()) {
+			ChannelHandler.handlerWrite(server, key);
+		}
+	}
+
 	private void processRegisterChannels() {
 		RegisterChannel registerChannel = null;
 		while ((registerChannel = registerChannels.poll()) != null) {
