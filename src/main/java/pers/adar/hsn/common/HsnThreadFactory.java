@@ -36,13 +36,13 @@ public class HsnThreadFactory {
 	
 	private static class AcceptSelectorFactory implements ThreadFactory {
 		
-		private static final String mark = "AcceptSelector";
+		private static final String MARK = "AcceptSelector";
 
 		@Override
 		public Thread newThread(Runnable runnable) {
 			Thread thread = new Thread(runnable);
 			thread.setPriority(Thread.MAX_PRIORITY);
-			thread.setName(mark);
+			thread.setName(MARK);
 			
 			return thread;
 		}
@@ -50,7 +50,7 @@ public class HsnThreadFactory {
 
 	private static class ChannelSelectorFactory implements ThreadFactory {
 		
-		private static final String mark = "ChannelSelector-";
+		private static final String MARK = "ChannelSelector-";
 		
 		private final AtomicInteger id = new AtomicInteger(0);
 
@@ -59,7 +59,7 @@ public class HsnThreadFactory {
 			Thread thread = new Thread(runnable);
 			thread.setDaemon(true);
 			thread.setPriority(Thread.MAX_PRIORITY);
-			thread.setName(mark + id.incrementAndGet());
+			thread.setName(MARK + id.incrementAndGet());
 			
 			return thread;
 		}
@@ -67,7 +67,7 @@ public class HsnThreadFactory {
 	
 	private static class ChannelHandlerFactory implements ThreadFactory {
 		
-		private static final String mark = "ChannelHandler-";
+		private static final String MARK = "ChannelHandler-";
 		
 		private final AtomicInteger id = new AtomicInteger(0);
 
@@ -76,7 +76,7 @@ public class HsnThreadFactory {
 			Thread thread = new Thread(runnable);
 			thread.setDaemon(true);
 			thread.setPriority(Thread.MAX_PRIORITY);
-			thread.setName(mark + id.incrementAndGet());
+			thread.setName(MARK + id.incrementAndGet());
 			
 			return thread;
 		}

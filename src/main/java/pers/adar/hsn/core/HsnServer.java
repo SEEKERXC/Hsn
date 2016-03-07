@@ -18,6 +18,7 @@
 package pers.adar.hsn.core;
 
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class HsnServer {
 
 	private int bufferPoolSize = HsnProperties.DEFAULT_BUFFER_POOL_SIZE;
 	
-	private Map<SocketOption, Object> socketOptions = new HashMap<>();
+	private EnumMap<SocketOption, Object> socketOptions = new EnumMap<>(SocketOption.class);
 	
 	private AcceptProcessor acceptProcessor;
 	
