@@ -56,7 +56,7 @@ public class BufferPool implements Closeable {
 		return new GenericObjectPool<>(new BufferFactory(bufferSize), poolConfig);
 	}
 	
-	private GenericObjectPoolConfig buildPoolConfig(int corePoolSize, int maxPoolSize, int keepAliveTime) {
+	private static GenericObjectPoolConfig buildPoolConfig(int corePoolSize, int maxPoolSize, int keepAliveTime) {
 		GenericObjectPoolConfig config = new GenericObjectPoolConfig();
 		config.setMaxIdle(corePoolSize);
 		config.setMaxTotal(maxPoolSize);

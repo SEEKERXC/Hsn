@@ -97,7 +97,7 @@ public class AcceptProcessor implements Closeable {
 		return (SocketImpl) method.invoke(serverSocketChannel.socket(), new Object[0]);
 	}
 	
-	private ExecutorService buildAcceptExecutor() {
+	private static ExecutorService buildAcceptExecutor() {
 		return Executors.newSingleThreadExecutor(HsnThreadFactory.buildAcceptSelectorFactory());
 	}
 
