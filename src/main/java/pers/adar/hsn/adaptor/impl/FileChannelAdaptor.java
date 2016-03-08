@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import pers.adar.hsn.component.ChannelSession.ChannelContext;
+import pers.adar.hsn.logger.Logger;
 
 public class FileChannelAdaptor extends StandardChannelAdaptor {
 
@@ -35,7 +36,7 @@ public class FileChannelAdaptor extends StandardChannelAdaptor {
 		try (FileChannel fileChannel = FileChannel.open(Paths.get(DIR + now()), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
 			fileChannel.write(channelContext.read());
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.error(e.getMessage(), e);
 		}
 		
 		channelContext.close();
