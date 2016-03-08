@@ -24,6 +24,11 @@ public abstract class AbstractChannelTask implements ChannelTask {
 
 	protected ChannelSession channelSession;
 
+	protected AbstractChannelTask(ChannelSession channelSession) {
+		super();
+		this.channelSession = channelSession;
+	}
+
 	@Override
 	public ChannelSession channelSession() {
 		return channelSession;
@@ -34,8 +39,4 @@ public abstract class AbstractChannelTask implements ChannelTask {
 		return channelSession.taskQueueIndex();
 	}
 
-	protected AbstractChannelTask(ChannelSession channelSession) {
-		super();
-		this.channelSession = channelSession;
-	}
 }

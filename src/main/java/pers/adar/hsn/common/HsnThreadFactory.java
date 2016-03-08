@@ -20,8 +20,10 @@ package pers.adar.hsn.common;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class HsnThreadFactory {
-	
+public final class HsnThreadFactory {
+
+	private HsnThreadFactory() {}
+
 	public static ThreadFactory buildAcceptSelectorFactory() {
 		return new AcceptSelectorFactory();
 	}
