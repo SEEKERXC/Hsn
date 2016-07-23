@@ -19,7 +19,6 @@ package pers.adar.hsn.core;
 
 import java.io.IOException;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
 import pers.adar.hsn.adaptor.ChannelAdaptor;
