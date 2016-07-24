@@ -33,7 +33,7 @@
 
 
 ####Demo
-	参见: free.hsn.HelloHsn
+	参见: me.smoe.hsn.HelloHsn
 	
 	Example: Echo server
 	
