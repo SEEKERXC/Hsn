@@ -108,6 +108,10 @@ public class ChannelSession {
 	}
 	
 	public Object getAttribute(String name) {
+		if (attributes == null) {
+			return null;
+		}
+		
 		return attributes.get(name);
 	}
 	
