@@ -37,7 +37,7 @@ public class PMChannelAdaptor extends StandardChannelAdaptor {
 	}
 	
 	@Override
-	public void onMessage(ChannelContext channelContext) {
+	public void onMessage(ChannelContext channelContext) throws Exception {
 		channelContext.write(PM_HTTP_RESPONSE);
 		channelContext.close();
 	}

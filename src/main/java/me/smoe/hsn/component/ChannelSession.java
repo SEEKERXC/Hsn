@@ -147,6 +147,8 @@ public class ChannelSession {
 		
 		selectionKey.cancel();
 		socketChannel.close();
+
+		wakeupSelector();
 	}
 	
 	public boolean checkClose() {
@@ -268,6 +270,7 @@ public class ChannelSession {
 	}
 	
 	private void wakeupSelector() {
+		System.out.println("W " + System.currentTimeMillis());
 		selectionKey.selector().wakeup();
 	}
 	
@@ -275,7 +278,7 @@ public class ChannelSession {
 		server.taskProcessor().channelAdaptor().onConnected(channelContext);
 	}
 	
-	public void onMessage() {
+	public void onMessage() throws Exception {
 		server.taskProcessor().channelAdaptor().onMessage(channelContext);
 	}
 	
@@ -284,7 +287,7 @@ public class ChannelSession {
 	}
 	
 	public void onExeception(Throwable throwable) {
-		server.taskProcessor().channelAdaptor().onExeception(channelContext, throwable);
+		server.taskProcessor().channelAdaptor().onException(channelContext, throwable);
 	}
 	
 	public class ChannelContext {
@@ -319,8 +322,16 @@ public class ChannelSession {
 			channelSession.flush();
 		}
 		
-		public void close() {
-			channelSession.needClose(true);
+		public void close(boolean force) throws Exception {
+			if (force) {
+				channelSession.close();
+			} else {
+				channelSession.needClose(true);
+			}
+		}
+		
+		public void close() throws Exception {
+			close(true);
 		}
 	}
 }

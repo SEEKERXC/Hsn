@@ -93,7 +93,10 @@ public class ChannelSelector implements Runnable {
 		RegisterChannel registerChannel;
 		while ((registerChannel = registerChannels.poll()) != null) {
 			try {
-				registerChannel.channel.register(selector, registerChannel.interestOps, registerChannel.channelSession);
+				SelectionKey selectionKey = registerChannel.channel.register(selector, registerChannel.interestOps, registerChannel.channelSession);
+				if (registerChannel.channelSession != null) {
+					registerChannel.channelSession.selectionKey(selectionKey);
+				}
 			} catch (ClosedChannelException e) {
 				continue;
 			}

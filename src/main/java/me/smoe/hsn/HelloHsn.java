@@ -27,7 +27,7 @@ public class HelloHsn {
 		HsnServer server = new HsnServer(10080, 200);
 		
 		// 设置用于处理连接相关操作的Selector数量(默认同CPU核心数量)
-		server.setChannelSelectorCount(2);
+		server.setChannelSelectorCount(1);
 		
 		// 设置用于处理连接相关操作的线程数量(默认为ChannelSelectorCount的两倍)
 		server.setChannelThreadCount(3);

@@ -28,12 +28,12 @@ public class StandardChannelAdaptor implements ChannelAdaptor {
 	}
 
 	@Override
-	public void onMessage(ChannelContext channelContext) {
+	public void onMessage(ChannelContext channelContext) throws Exception {
 
 	}
 
 	@Override
-	public void onExeception(ChannelContext channelContext, Throwable throwable) {
+	public void onException(ChannelContext channelContext, Throwable throwable) {
 
 	}
 

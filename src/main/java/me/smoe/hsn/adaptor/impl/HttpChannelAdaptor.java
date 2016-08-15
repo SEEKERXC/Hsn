@@ -18,6 +18,7 @@
 package me.smoe.hsn.adaptor.impl;
 
 import java.nio.charset.Charset;
+import java.util.concurrent.TimeUnit;
 
 import me.smoe.hsn.component.ChannelSession.ChannelContext;
 
@@ -45,5 +46,26 @@ public class HttpChannelAdaptor extends StandardChannelAdaptor {
 	 */
 	private boolean checkOver(String httpContent) {
 		return httpContent.endsWith("\r\n\r\n");
+	}
+
+	@Override
+	public void onConnected(ChannelContext channelContext) {
+		System.out.println(System.currentTimeMillis() + " 连接上啦...");
+		
+		new Thread(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(3);
+				System.out.println("zhunb guangbi");
+				channelContext.close(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}).start();
+	}
+
+	@Override
+	public void onClosed(ChannelContext channelContext) {
+		System.out.println(System.currentTimeMillis() + " Close");
 	}
 }

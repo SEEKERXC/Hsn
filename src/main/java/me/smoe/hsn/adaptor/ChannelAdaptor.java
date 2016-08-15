@@ -29,12 +29,12 @@ public interface ChannelAdaptor {
 	/**
 	 * 数据回调
 	 */
-	public void onMessage(ChannelContext channelContext);
+	public void onMessage(ChannelContext channelContext) throws Exception;
 	
 	/**
 	 * 异常回调
 	 */
-	public void onExeception(ChannelContext channelContext, Throwable throwable);
+	public void onException(ChannelContext channelContext, Throwable throwable);
 	
 	/**
 	 * 关闭回调

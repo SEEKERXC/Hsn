@@ -44,7 +44,6 @@ public final class ChannelHandler {
 		selectionKey.interestOps(selectionKey.interestOps() & (~SelectionKey.OP_READ));
 		
 		ChannelSession channelSession = (ChannelSession) selectionKey.attachment();
-		channelSession.selectionKey(selectionKey);
 		
 		server.taskProcessor().processor(new ChannelReadTask(channelSession));
 	}

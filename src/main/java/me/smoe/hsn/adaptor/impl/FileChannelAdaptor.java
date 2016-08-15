@@ -32,7 +32,7 @@ public class FileChannelAdaptor extends StandardChannelAdaptor {
 	private static final String DIR = "/opt/files/";
 	
 	@Override
-	public void onMessage(ChannelContext channelContext) {
+	public void onMessage(ChannelContext channelContext) throws Exception {
 		try (FileChannel fileChannel = FileChannel.open(Paths.get(DIR + now()), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
 			fileChannel.write(channelContext.read());
 		} catch (IOException e) {

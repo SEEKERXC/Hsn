@@ -28,13 +28,13 @@ public class LogChannelAdaptor extends StandardChannelAdaptor {
 	}
 
 	@Override
-	public void onMessage(ChannelContext channelContext) {
+	public void onMessage(ChannelContext channelContext) throws Exception {
 		Logger.info("On Message");
 		channelContext.close();
 	}
 
 	@Override
-	public void onExeception(ChannelContext channelContext, Throwable throwable) {
+	public void onException(ChannelContext channelContext, Throwable throwable) {
 		Logger.info("On Exeception");
 	}
 
