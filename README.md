@@ -4,7 +4,7 @@
 > A simple nio server framework.
 
 
-####设计概要
+#### 设计概要
 	1. IO模型采用JDK NIO
 
 	2. 具备多线程单机扩容能力
@@ -22,7 +22,7 @@
 			通过串行化设计,同一连接的业务处理始终仅在同一个线程内完成,避免了多线程竞争和同步锁.
 
 
-####相较于Netty Mina
+#### 相较于Netty Mina
 * [x] 代码更简洁, 仅40KB左右.
 	
 * [x] 更大的自定义扩展空间.
@@ -32,7 +32,7 @@
 * [x] 更快捷联系作者探讨相关问题(可忽略).
 
 
-####Demo
+#### Demo
 	参见: me.smoe.hsn.HelloHsn
 	
 	Example: Echo server
@@ -75,7 +75,7 @@
 		}
 	
 	
-####Jmeter测试数据 
+#### Jmeter测试数据 
 	测试环境:
 		Dell E5400、Win7、I5-4210U
 	软件环境:
